@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3ea">
+  <meta name="description" content="Một tấm thiệp nhỏ, gửi ngàn điều thương. Tạo thiệp chúc mừng ngày Phụ nữ Việt Nam 20/10 dành cho bạn bè.">
+  <title>20/10 · Gửi bạn một chút thương</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌷%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{--paper:#f7f3ea;--ink:#3e493c;--pink:#b85d70;--soft:#eed9d8;--line:#dcdccf}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;background-image:radial-gradient(#8b8a6c0d .7px,transparent .7px);background-size:5px 5px}
+    button,input,textarea{font:inherit}button,a,input,textarea{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #7c8954;outline-offset:5px}
+    header{max-width:1240px;margin:auto;padding:29px 42px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-family:Georgia,serif;font-size:23px;letter-spacing:-1px}.brand span{color:var(--pink)}.edition{font-size:10px;letter-spacing:2px;text-transform:uppercase}
+    main{max-width:1180px;margin:auto;padding:66px 40px 36px}.intro{text-align:center}.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase}.intro h1{font:normal clamp(38px,5.4vw,66px)/1.14 Georgia,'Times New Roman',serif;letter-spacing:-2px;margin:20px 0 17px}.intro h1 em{color:var(--pink);font-weight:normal}.intro p{font-size:14px;color:#74786c;line-height:1.8;margin:0}
+    .layout{display:grid;grid-template-columns:1.24fr 1fr;gap:65px;align-items:center;margin-top:52px}.stage{position:relative;padding:22px 18px 33px}.stage:before{content:"";position:absolute;inset:35px 25px 28px;background:#dfdecf;transform:rotate(-5deg);border-radius:4px}
+    .card{position:relative;min-height:485px;background:#fffcf5;border:1px solid #e4decf;box-shadow:0 18px 36px #51483212;text-align:center;padding:28px 30px 24px;transform:rotate(-2deg);border-radius:3px}.card-top{display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;color:#828774}.stamp{border:1px solid #c2c5ae;border-radius:50%;height:40px;width:40px;display:grid;place-items:center;font:italic 18px Georgia;transform:rotate(15deg)}.flower{width:230px;height:228px;display:block;margin:-8px auto -1px}.card h2{font:normal 35px/1.18 Georgia,serif;margin:8px 0 15px;color:#a65d6d}.card .small{font-size:10px;letter-spacing:2px;text-transform:uppercase}.open-button{border:0;background:var(--ink);color:white;border-radius:30px;padding:13px 24px;font-size:12px;margin-top:20px;transition:transform .2s,background .2s}.open-button:hover{background:#59684e;transform:translateY(-2px)}.note{text-align:center;margin:21px 0 0;color:#858774;font:italic 13px Georgia,serif}.seal{position:absolute;right:-3px;bottom:42px;background:#bd6a7b;color:#fff1e8;border:5px double #d68b98;width:67px;height:67px;border-radius:50%;display:grid;place-items:center;font:26px Georgia;transform:rotate(12deg)}
+    .editor{padding:8px 0}.section-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#858774}.editor h2{font:normal 30px Georgia,serif;margin:12px 0}.sub{font-size:13px;color:#777b6e;line-height:1.7;margin-bottom:25px}label{display:block;font-size:12px;margin:19px 0 9px}input,textarea{width:100%;border:1px solid #d7d8ca;border-radius:7px;background:#fffcf580;color:var(--ink);padding:13px 14px;font-size:13px;line-height:1.6}textarea{resize:vertical;min-height:112px}.row{display:grid;grid-template-columns:1fr 1fr;gap:15px}.suggestions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.chip{background:transparent;border:1px solid #d7d8ca;border-radius:20px;padding:7px 11px;color:#727767;font-size:11px}.chip:hover,.chip[aria-pressed=true]{background:#e9eada;border-color:#a9b18d;color:#3e493c}.share{margin-top:23px;width:100%;border:0;border-radius:7px;background:var(--pink);color:white;padding:15px;font-size:13px;transition:background .2s}.share:hover{background:#a34e60}.privacy{font-size:10px;line-height:1.7;color:#858774;text-align:center;margin:12px 0 0}.status{min-height:20px;font-size:12px;color:#7a4d59;text-align:center;margin-top:10px}.bottom{margin-top:35px;border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;color:#818674;font-size:11px}.bottom span:last-child{font:italic 14px Georgia,serif}
+    dialog{width:min(530px,calc(100% - 32px));max-height:85vh;overflow:auto;border:1px solid #ddd2c0;background:#fffcf5;border-radius:10px;padding:43px 35px;text-align:center;color:var(--ink);box-shadow:0 25px 100px #30282444}dialog::backdrop{background:#353c3280;backdrop-filter:blur(5px)}.close{position:absolute;right:13px;top:10px;background:none;border:0;font-size:26px;color:#797d6e}.letter-date{font-size:11px;letter-spacing:3px;color:var(--pink)}dialog h2{font:normal 35px Georgia,serif;margin:23px 0}.message{white-space:pre-wrap;overflow-wrap:anywhere;font:18px/1.9 Georgia,serif}.signature{font:italic 19px Georgia,serif;margin-top:30px;color:var(--pink);overflow-wrap:anywhere}.heart{font-size:34px;color:var(--pink);margin:20px}.confetti{position:fixed;pointer-events:none;top:-30px;z-index:5;font-size:20px;animation:fall 3.5s ease-in forwards}@keyframes fall{to{transform:translate(60px,105vh) rotate(240deg);opacity:0}}
+    [hidden]{display:none!important}.recipient-mode .layout{grid-template-columns:1fr;max-width:570px;margin:32px auto}.recipient-mode .editor{display:none}.recipient-mode .stage{width:100%}.make-own{display:block;text-align:center;font-size:13px;color:var(--pink);margin-top:25px}
+    @media(max-width:760px){header{padding:23px}.edition{font-size:8px;letter-spacing:1px}main{padding:38px 20px 25px}.intro h1{letter-spacing:-1px}.intro p{font-size:13px}.layout{grid-template-columns:1fr;gap:15px;margin-top:25px;max-width:470px;margin-left:auto;margin-right:auto}.card{min-height:455px;padding:24px}.stage{padding:20px 17px 22px}.editor{padding:10px 5px}.bottom{gap:15px;font-size:10px}.bottom span:last-child{font-size:12px}.seal{right:0;bottom:35px}.row{gap:10px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.confetti{display:none}}
+  </style>
+</head>
+<body>
+  <header><div class="brand">chút <span>thương.</span></div><div class="edition">Dành riêng cho ngày 20 tháng 10</div></header>
+  <main>
+    <section class="intro"><div class="eyebrow">Happy Vietnamese Women's Day</div><h1>Một tấm thiệp nhỏ.<br>Một trời <em>yêu thương.</em></h1><p>Gửi đến những người bạn đáng mến,<br>những điều dịu dàng nhất trong ngày 20/10.</p></section>
+    <div class="layout">
+      <section class="stage" aria-label="Thiệp chúc mừng">
+        <article class="card">
+          <div class="card-top"><span>GỬI MỘT NGƯỜI ĐẶC BIỆT</span><span class="stamp">20/10</span></div>
+          <svg class="flower" viewBox="0 0 260 255" aria-hidden="true">
+            <defs><linearGradient id="petal" x2=".7" y2="1"><stop stop-color="#e8b6b8"/><stop offset="1" stop-color="#b85d70"/></linearGradient><linearGradient id="wrap" x2="1" y2="1"><stop stop-color="#e5dfca"/><stop offset="1" stop-color="#f6efdd"/></linearGradient></defs>
+            <g fill="none" stroke="#7c8a60" stroke-width="3"><path d="M134 221Q113 160 85 89M134 220Q135 132 146 58M134 218Q156 143 187 97M133 219Q113 123 111 69M134 220Q149 137 166 121"/></g>
+            <g fill="#89966c"><path d="M121 170Q76 169 72 131Q108 134 121 170M142 178Q190 163 196 132Q161 138 142 178M130 138Q103 123 101 103Q126 111 130 138M148 137Q169 101 184 112Q178 134 148 137"/></g>
+            <g fill="url(#petal)"><path d="M85 108C54 97 56 61 66 61L81 71 88 48 100 70 113 63C116 87 106 107 85 108Z"/><path d="M145 85C119 77 121 42 130 34L144 49 156 27 166 48 179 42C177 72 164 86 145 85Z"/><path d="M185 119C162 115 154 89 165 77L180 85 186 64 197 82 211 79C212 101 204 117 185 119Z"/></g>
+            <g fill="#d596a0"><path d="M112 85C92 77 92 53 103 45L113 57 124 43C139 65 131 83 112 85Z"/><path d="M163 144C146 138 143 118 150 108L164 120 177 105C187 128 181 142 163 144Z"/></g>
+            <g fill="none" stroke="#f4d1cf" stroke-width="1.5" opacity=".7"><path d="M81 74Q76 91 86 101M144 51Q138 69 146 79M182 89Q178 106 187 113"/></g>
+            <path d="M94 158L133 238 174 160 135 183Z" fill="url(#wrap)" stroke="#d4ceb7"/><path d="M94 158L135 183 133 238" fill="#eee8d6"/><path d="M123 211Q102 191 105 208Q108 220 134 213Q155 190 159 204Q159 218 134 213M133 214L120 239M136 214L146 235" fill="none" stroke="#b66c7d" stroke-width="3" stroke-linecap="round"/>
+            <g fill="#b0b692"><circle cx="57" cy="117" r="3"/><circle cx="198" cy="50" r="2"/><circle cx="75" cy="40" r="2"/><path d="M217 132v10m-5-5h10" stroke="#b0b692"/></g>
+          </svg>
+          <div class="small">Chúc mừng ngày Phụ nữ Việt Nam</div>
+          <h2 id="card-title">Bạn xứng đáng với<br>những điều đẹp nhất.</h2>
+          <button class="open-button" id="open">Mở thiệp của bạn &nbsp; ↗</button>
+          <div class="seal" aria-hidden="true">♡</div>
+        </article>
+        <p class="note">Một chút hoa, một chút nắng, một chút thương gửi bạn.</p>
+      </section>
+      <section class="editor" aria-labelledby="editor-title">
+        <div class="section-label">01 / Viết một điều dễ thương</div><h2 id="editor-title">Dành tặng bạn của mình</h2><p class="sub">Thêm một cái tên, gửi một lời chúc.<br>Vậy là có một món quà nhỏ thật riêng.</p>
+        <form id="form">
+          <div class="row"><div><label for="to">Gửi đến</label><input id="to" maxlength="60" placeholder="Tên người bạn đáng mến"></div><div><label for="from">Người gửi</label><input id="from" maxlength="60" placeholder="Tên của bạn"></div></div>
+          <label for="wish">Một lời chúc từ bạn</label><textarea id="wish" maxlength="1200">Chúc bạn một ngày 20/10 thật rạng rỡ! Mong bạn luôn vui vẻ, tự tin theo đuổi những điều mình yêu và được yêu thương theo cách dịu dàng nhất. Cảm ơn vì đã là một người bạn thật tuyệt! ♡</textarea>
+          <div class="suggestions" aria-label="Chọn lời chúc mẫu"><button class="chip" type="button" data-wish="0" aria-pressed="true">♡ Dịu dàng</button><button class="chip" type="button" data-wish="1" aria-pressed="false">✧ Vui vẻ</button><button class="chip" type="button" data-wish="2" aria-pressed="false">❀ Bạn thân</button></div>
+          <button class="share" type="submit">Tạo link & gửi yêu thương &nbsp; ↗</button>
+          <p class="privacy">Không cần đăng nhập. Lời chúc nằm trong link bạn chia sẻ.<br>Ai có link đều có thể đọc thiệp.</p>
+          <div id="status" class="status" role="status" aria-live="polite"></div>
+          <div id="link-box" hidden><label for="share-link">Sao chép link này để gửi bạn bè</label><input id="share-link" readonly></div>
+        </form>
+      </section>
+    </div>
+    <a class="make-own" id="make-own" href="./" hidden>Tự tay viết một tấm thiệp khác ↗</a>
+    <footer class="bottom"><span>20.10 · Những điều đẹp đẽ dành cho bạn</span><span>Gửi đi bằng cả tấm lòng ♡</span></footer>
+  </main>
+  <dialog id="letter" aria-labelledby="letter-title"><button class="close" id="close" aria-label="Đóng thiệp">×</button><div class="letter-date">20 / 10</div><div class="heart" aria-hidden="true">❀</div><h2 id="letter-title">Gửi bạn thân mến,</h2><p class="message" id="message"></p><div class="signature" id="signature"></div><button class="open-button" id="done">Cất một chút thương vào tim ♡</button></dialog>
+  <script>
+    'use strict';
+    const $ = id => document.getElementById(id);
+    const wishes = [$('wish').value,'Chúc bạn 20/10 xinh tươi như hoa, vui như được nghỉ học, ví luôn đầy và deadline luôn xa! Hôm nay hãy tự thưởng cho mình một món ngon nhé. Bạn xứng đáng với cả ngàn điều dễ thương! ✨','Gửi cô bạn thân yêu! Cảm ơn vì những lần ngồi nghe mình kể đủ thứ chuyện, những trận cười không lý do và cả những lúc ở bên khi mình cần. Chúc bạn 20/10 thật vui. Mong tụi mình sẽ còn cùng nhau tạo thêm thật nhiều kỷ niệm! ♡'];
+    let received = false;
+    function getCard(){return {to:$('to').value.trim(),from:$('from').value.trim(),wish:$('wish').value.trim()||wishes[0]};}
+    function preview(){const c=getCard();$('letter-title').textContent=c.to?`Gửi ${c.to},`:'Gửi bạn thân mến,';$('message').textContent=c.wish;$('signature').textContent=c.from?`Thương mến, ${c.from}`:'Từ một người luôn quý mến bạn ♡';}
+    function petals(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<18;i++){const p=document.createElement('span');p.className='confetti';p.textContent=['♡','✿','❀'][i%3];p.style.left=Math.random()*100+'vw';p.style.color=['#bd6a7b','#9ca77c','#d7a2a0'][i%3];p.style.animationDelay=Math.random()*.7+'s';document.body.append(p);setTimeout(()=>p.remove(),4500);}}
+    $('open').addEventListener('click',()=>{preview();$('letter').showModal();petals();});
+    for(const id of ['close','done'])$(id).addEventListener('click',()=>$('letter').close());
+    $('letter').addEventListener('click',e=>{if(e.target===$('letter')){const r=$('letter').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('letter').close();}});
+    document.querySelectorAll('[data-wish]').forEach(button=>button.addEventListener('click',()=>{$('wish').value=wishes[Number(button.dataset.wish)];document.querySelectorAll('[data-wish]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));}));
+    $('wish').addEventListener('input',()=>document.querySelectorAll('[data-wish]').forEach(b=>b.setAttribute('aria-pressed',String($('wish').value===wishes[Number(b.dataset.wish)]))));
+    $('form').addEventListener('submit',async e=>{
+      e.preventDefault();
+      if(location.protocol==='file:'){$('status').textContent='Hãy đưa web lên GitHub Pages trước để tạo link gửi bạn bè. Bạn vẫn có thể mở xem thiệp tại đây.';return;}
+      const url=new URL(location.href);url.hash=new URLSearchParams(getCard()).toString();
+      $('share-link').value=url.href;$('link-box').hidden=false;
+      try{await navigator.clipboard.writeText(url.href);$('status').textContent='Đã sao chép link! Gửi cho người bạn yêu quý nhé ♡';}catch{$('status').textContent='Link đã sẵn sàng. Chọn và sao chép ở ô bên dưới nhé.';$('share-link').focus();$('share-link').select();}
+    });
+    $('share-link').addEventListener('click',()=>$('share-link').select());
+    function loadCard(){
+      const params=new URLSearchParams(location.hash.slice(1));received=params.has('wish');
+      document.body.classList.toggle('recipient-mode',received);$('make-own').hidden=!received;
+      if(received){$('to').value=(params.get('to')||'').slice(0,60);$('from').value=(params.get('from')||'').slice(0,60);$('wish').value=(params.get('wish')||wishes[0]).slice(0,1200);}
+      preview();
+    }
+    $('make-own').href=location.pathname;window.addEventListener('hashchange',loadCard);loadCard();
+  </script>
+</body>
+</html>
