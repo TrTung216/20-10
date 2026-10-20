@@ -69,6 +69,45 @@
     const $ = id => document.getElementById(id);
     const wishes = [$('wish').value,'Chúc bạn 20/10 xinh tươi như hoa, vui như được nghỉ học, ví luôn đầy và deadline luôn xa! Hôm nay hãy tự thưởng cho mình một món ngon nhé. Bạn xứng đáng với cả ngàn điều dễ thương! ✨','Gửi cô bạn thân yêu! Cảm ơn vì những lần ngồi nghe mình kể đủ thứ chuyện, những trận cười không lý do và cả những lúc ở bên khi mình cần. Chúc bạn 20/10 thật vui. Mong tụi mình sẽ còn cùng nhau tạo thêm thật nhiều kỷ niệm! ♡'];
     let received = false;
+    // Version 1 template IDs must retain their original wording for shared links.
+    function toBase64Url(bytes){return btoa(Array.from(bytes,b=>String.fromCharCode(b)).join('')).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+    function fromBase64Url(value){
+      if(!/^[A-Za-z0-9_-]+$/.test(value)||value.length>16000)throw new Error('Invalid link');
+      return Uint8Array.from(atob(value.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
+    }
+    async function encodeCard(card){
+      const template=wishes.indexOf(card.wish);
+      const bytes=new TextEncoder().encode(JSON.stringify([card.to,card.from,template<0?card.wish:template]));
+      const plain='v1='+toBase64Url(bytes);
+      if(typeof CompressionStream==='undefined')return plain;
+      try{
+        const stream=new Blob([bytes]).stream().pipeThrough(new CompressionStream('deflate'));
+        const compressed='z1='+toBase64Url(new Uint8Array(await new Response(stream).arrayBuffer()));
+        return compressed.length<plain.length?compressed:plain;
+      }catch{return plain;}
+    }
+    async function decodeCard(hash){
+      const params=new URLSearchParams(hash);
+      if(params.has('v1')||params.has('z1')){
+        let bytes=fromBase64Url(params.get('v1')||params.get('z1'));
+        if(params.has('z1')){
+          if(typeof DecompressionStream==='undefined')throw new Error('Hãy mở link bằng phiên bản trình duyệt mới nhất nhé.');
+          const reader=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate')).getReader();
+          const chunks=[];let length=0;
+          try{while(true){const {value,done}=await reader.read();if(done)break;length+=value.length;if(length>16000)throw new Error('Invalid link');chunks.push(value);}}
+          finally{await reader.cancel();}
+          bytes=new Uint8Array(length);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length;}
+        }
+        const data=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
+        if(!Array.isArray(data)||data.length!==3||typeof data[0]!=='string'||typeof data[1]!=='string')throw new Error('Invalid link');
+        const wish=Number.isInteger(data[2])?wishes[data[2]]:data[2];
+        if(typeof wish!=='string')throw new Error('Invalid link');
+        return {to:data[0],from:data[1],wish};
+      }
+      if(params.has('wish'))return {to:params.get('to')||'',from:params.get('from')||'',wish:params.get('wish')||wishes[0]};
+      if(hash)throw new Error('Invalid link');
+      return null;
+    }
     function getCard(){return {to:$('to').value.normalize('NFC').trim(),from:$('from').value.normalize('NFC').trim(),wish:$('wish').value.normalize('NFC').trim()||wishes[0]};}
     function preview(){const c=getCard();$('letter-title').textContent=c.to?`Gửi ${c.to},`:'Gửi bạn thân mến,';$('message').textContent=c.wish;$('signature').textContent=c.from?`Thương mến, ${c.from}`:'Từ một người luôn quý mến bạn ♡';}
     function petals(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<18;i++){const p=document.createElement('span');p.className='confetti';p.textContent=['♡','✿','❀'][i%3];p.style.left=Math.random()*100+'vw';p.style.color=['#bd6a7b','#9ca77c','#d7a2a0'][i%3];p.style.animationDelay=Math.random()*.7+'s';document.body.append(p);setTimeout(()=>p.remove(),4500);}}
@@ -80,16 +119,32 @@
     $('form').addEventListener('submit',async e=>{
       e.preventDefault();
       if(location.protocol==='file:'){$('status').textContent='Hãy đưa web lên GitHub Pages trước để tạo link gửi bạn bè. Bạn vẫn có thể mở xem thiệp tại đây.';return;}
-      const url=new URL(location.href);url.hash=new URLSearchParams(getCard()).toString();
+      const button=e.submitter||document.querySelector('.share');button.disabled=true;
+      let url;
+      try{
+        url=new URL(location.href);url.pathname=url.pathname.replace(/\/index\.html$/,'/');url.search='';
+        url.hash=await encodeCard(getCard());
+      }catch{$('status').textContent='Chưa tạo được link. Bạn thử lại nhé.';return;}
+      finally{button.disabled=false;}
       $('share-link').value=url.href;$('link-box').hidden=false;
       try{await navigator.clipboard.writeText(url.href);$('status').textContent='Đã sao chép link! Gửi cho người bạn yêu quý nhé ♡';}catch{$('status').textContent='Link đã sẵn sàng. Chọn và sao chép ở ô bên dưới nhé.';$('share-link').focus();$('share-link').select();}
     });
     $('share-link').addEventListener('click',()=>$('share-link').select());
-    function loadCard(){
-      const params=new URLSearchParams(location.hash.slice(1));received=params.has('wish');
-      document.body.classList.toggle('recipient-mode',received);$('make-own').hidden=!received;
-      if(received){$('to').value=(params.get('to')||'').normalize('NFC').slice(0,60);$('from').value=(params.get('from')||'').normalize('NFC').slice(0,60);$('wish').value=(params.get('wish')||wishes[0]).normalize('NFC').slice(0,1200);}
-      preview();
+    let loadVersion=0;
+    async function loadCard(){
+      const version=++loadVersion;$('open').disabled=true;
+      try{
+        const card=await decodeCard(location.hash.slice(1));
+        if(version!==loadVersion)return;
+        received=!!card;document.body.classList.toggle('recipient-mode',received);$('make-own').hidden=!received;
+        if(card){$('to').value=card.to.normalize('NFC').slice(0,60);$('from').value=card.from.normalize('NFC').slice(0,60);$('wish').value=card.wish.normalize('NFC').slice(0,1200);}
+        $('status').textContent='';preview();
+      }catch(error){
+        if(version!==loadVersion)return;
+        received=false;document.body.classList.remove('recipient-mode');$('make-own').hidden=true;
+        $('status').textContent=error.message.startsWith('Hãy mở')?error.message:'Link thiệp không hợp lệ hoặc bị thiếu. Bạn nhờ người gửi sao chép lại toàn bộ link nhé.';
+        $('open').disabled=true;return;
+      }finally{if(version===loadVersion&&$('status').textContent==='')$('open').disabled=false;}
     }
     $('make-own').href=location.pathname;window.addEventListener('hashchange',loadCard);loadCard();
   </script>
