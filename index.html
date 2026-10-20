@@ -52,7 +52,7 @@
         <form id="form">
           <div class="row"><div><label for="to">Gửi đến</label><input id="to" maxlength="60" placeholder="Tên người bạn đáng mến"></div><div><label for="from">Người gửi</label><input id="from" maxlength="60" placeholder="Tên của bạn"></div></div>
           <label for="wish">Một lời chúc từ bạn</label><textarea id="wish" maxlength="1200">Chúc bạn một ngày 20/10 thật rạng rỡ! Mong bạn luôn vui vẻ, tự tin theo đuổi những điều mình yêu và được yêu thương theo cách dịu dàng nhất. Cảm ơn vì đã là một người bạn thật tuyệt! ♡</textarea>
-          <div class="suggestions" aria-label="Chọn lời chúc mẫu"><button class="chip" type="button" data-wish="0" aria-pressed="true">♡ Dịu dàng</button><button class="chip" type="button" data-wish="1" aria-pressed="false">✧ Vui vẻ</button><button class="chip" type="button" data-wish="2" aria-pressed="false">❀ Bạn thân</button></div>
+          <div class="suggestions" aria-label="Chọn lời chúc mẫu"><button class="chip" type="button" data-wish="0" aria-pressed="true">♡ Dịu dàng</button><button class="chip" type="button" data-wish="1" aria-pressed="false">✧ Vui vẻ</button><button class="chip" type="button" data-wish="2" aria-pressed="false">❀ Bạn thân</button><button class="chip" type="button" data-wish="3" aria-pressed="false">♡ Mẹ yêu</button></div>
           <button class="share" type="submit">Tạo link & gửi yêu thương &nbsp; ↗</button>
           <p class="privacy">Không cần đăng nhập. Lời chúc nằm trong link bạn chia sẻ.<br>Ai có link đều có thể đọc thiệp.</p>
           <div id="status" class="status" role="status" aria-live="polite"></div>
@@ -68,6 +68,7 @@
     'use strict';
     const $ = id => document.getElementById(id);
     const wishes = [$('wish').value,'Chúc bạn 20/10 xinh tươi như hoa, vui như được nghỉ học, ví luôn đầy và deadline luôn xa! Hôm nay hãy tự thưởng cho mình một món ngon nhé. Bạn xứng đáng với cả ngàn điều dễ thương! ✨','Gửi cô bạn thân yêu! Cảm ơn vì những lần ngồi nghe mình kể đủ thứ chuyện, những trận cười không lý do và cả những lúc ở bên khi mình cần. Chúc bạn 20/10 thật vui. Mong tụi mình sẽ còn cùng nhau tạo thêm thật nhiều kỷ niệm! ♡'];
+    wishes.push('Mẹ yêu ơi, nhân ngày 20/10, con chúc mẹ luôn mạnh khỏe, bình an và có thật nhiều niềm vui. Cảm ơn mẹ vì những bữa cơm ấm áp, những lời hỏi han và tình yêu mẹ dành cho con mỗi ngày. Mong mẹ dành thêm thời gian nghỉ ngơi, làm những điều mẹ thích và luôn cảm nhận được rằng mẹ được yêu thương biết bao. Con yêu mẹ nhiều lắm! ♡');
     let received = false;
     // Version 1 template IDs must retain their original wording for shared links.
     function toBase64Url(bytes){return btoa(Array.from(bytes,b=>String.fromCharCode(b)).join('')).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
