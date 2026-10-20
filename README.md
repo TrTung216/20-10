@@ -5,7 +5,7 @@ Trang thiệp chúc mừng ngày Phụ nữ Việt Nam dành cho bạn bè, bằ
 ## Tính năng
 
 - Thiệp giấy màu kem, hoa tulip vẽ bằng SVG và hiệu ứng mở thư.
-- Điền tên người nhận, tên người gửi, lời chúc riêng hoặc chọn 3 mẫu.
+- Điền tên người nhận, tên người gửi, lời chúc riêng hoặc chọn 4 mẫu: Dịu dàng, Vui vẻ, Bạn thân và Mẹ yêu.
 - Tạo link cá nhân hóa; người nhận mở link sẽ thấy thiệp, không thấy biểu mẫu.
 - Link gọn hơn: lời chúc mẫu dùng mã mẫu, lời chúc riêng dùng UTF-8/Base64URL và nén Deflate khi có lợi. Các link cũ vẫn mở được.
 - Giao diện điện thoại, hỗ trợ bàn phím và chế độ giảm chuyển động.
@@ -32,7 +32,7 @@ Nếu trình duyệt không cho sao chép tự động, sao chép link trong ô 
 
 Tên và lời chúc được mã hóa URL trong phần fragment (`#`) của link, không lưu vào cơ sở dữ liệu. Đây không phải mã hóa bảo mật: ai có link đều đọc được. Không đưa thông tin nhạy cảm vào thiệp.
 
-Link mới dùng định dạng `v1` (Base64URL) hoặc `z1` (Deflate + Base64URL). Link `z1` cần trình duyệt hỗ trợ `DecompressionStream`; nếu trình duyệt tạo thiệp không hỗ trợ nén, web tự dùng `v1`. Nội dung ba mẫu lời chúc ở phiên bản 1 phải được giữ nguyên để các link đã gửi không đổi nội dung. Muốn link có độ dài cố định rất ngắn cần thêm dịch vụ lưu thiệp hoặc rút gọn URL.
+Link mới dùng định dạng `v1` (Base64URL) hoặc `z1` (Deflate + Base64URL). Link `z1` cần trình duyệt hỗ trợ `DecompressionStream`; nếu trình duyệt tạo thiệp không hỗ trợ nén, web tự dùng `v1`. Nội dung và thứ tự các mẫu lời chúc đã xuất bản phải được giữ nguyên để các link đã gửi không đổi nội dung; mẫu mới được thêm vào cuối danh sách. Muốn link có độ dài cố định rất ngắn cần thêm dịch vụ lưu thiệp hoặc rút gọn URL.
 
 ## Chỉnh sửa
 
